@@ -1,0 +1,13 @@
+package:
+    type:           yii2-extesion
+    name:           yii2-reminder
+    title:          Reminder module for Yii2
+    headline:       Yii2 Reminder
+    keywords:       yii2, reminder
+    namespace:      hiqdev\yii2\reminder
+    description:    |
+        This package provides reminder functionality for Yii2:
+
+        - module with controller
+        - widget
+        - asset
