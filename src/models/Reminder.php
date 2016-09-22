@@ -11,7 +11,7 @@ class Reminder extends Model
 {
     use ModelTrait;
 
-    public static $i18nDictionary = 'hipanel/reminder';
+    public static $i18nDictionary = 'hiqdev/yii2/reminder';
 
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';

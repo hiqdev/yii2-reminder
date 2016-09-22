@@ -17,7 +17,7 @@ use yii\helpers\Html;
 </a>
 <ul class="dropdown-menu">
     <li class="header">
-        <?= Yii::t('hipanel/reminder', 'Reminders') ?>
+        <?= Yii::t('hiqdev/yii2/reminder', 'Reminders') ?>
     </li>
     <li class="reminder-body">
         <?= $loaderTemplate ?>
