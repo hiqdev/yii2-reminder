@@ -15,8 +15,8 @@ use yii\helpers\Url;
                 <div>
                     <h4>
                         <?= Html::beginTag('a', ['href' => Url::toRoute([sprintf("@%s/view", $reminder->objectName), 'id' => $reminder->object_id])]) ?>
-                        <?= Yii::t('hipanel/reminder', "{0} ID #{1}", [Yii::t('hipanel/reminder', ucfirst($reminder->objectName)), $reminder->object_id]) ?>
-                        <small><?= Yii::t('hipanel/reminder', 'Next time') ?>
+                        <?= Yii::t('hiqdev/yii2/reminder', "{0} ID #{1}", [Yii::t('hiqdev/yii2/reminder', ucfirst($reminder->objectName)), $reminder->object_id]) ?>
+                        <small><?= Yii::t('hiqdev/yii2/reminder', 'Next time') ?>
                             : <?= $reminder->calculateClientNextTime($offset) ?></small>
                         <?= Html::endTag('a') ?>
                     </h4>
@@ -24,10 +24,10 @@ use yii\helpers\Url;
                         <?= StringHelper::truncateWords(Html::encode($reminder->message), 3) ?>
                     </p>
                     <small>
-                        <?= Yii::t('hipanel/reminder', 'Remind in') ?>:
+                        <?= Yii::t('hiqdev/yii2/reminder', 'Remind in') ?>:
                         <?php foreach ($remindInOptions as $time => $label) : ?>
                             <?= Html::button(
-                                Yii::t('hipanel/reminder', $label),
+                                Yii::t('hiqdev/yii2/reminder', $label),
                                 [
                                     'class' => 'btn btn-xs btn-link reminder-update',
                                     'data' => [
@@ -38,7 +38,7 @@ use yii\helpers\Url;
                             ) ?>
                         <?php endforeach ?>
                         <br>
-                        <?= Html::button(Yii::t('hipanel/reminder', 'Don\'t remind'), [
+                        <?= Html::button(Yii::t('hiqdev/yii2/reminder', 'Don\'t remind'), [
                             'class' => 'btn btn-xs btn-block btn-danger reminder-delete lg-mt-10 md-mt-10',
                             'data' => [
                                 'reminder-id' => $reminder->id,
@@ -49,6 +49,6 @@ use yii\helpers\Url;
             </li>
         <?php endforeach; ?>
     <?php else : ?>
-        <li class="margin text-muted" style="font-size: small"><?= Yii::t('hipanel/reminder', 'You have no reminders') ?></li>
+        <li class="margin text-muted" style="font-size: small"><?= Yii::t('hiqdev/yii2/reminder', 'You have no reminders') ?></li>
     <?php endif ?>
 </ul>

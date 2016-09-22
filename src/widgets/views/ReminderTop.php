@@ -22,6 +22,6 @@ use yii\helpers\Html;
     <li class="reminder-body">
         <?= $loaderTemplate ?>
     </li>
-    <li class="footer"><?= Html::a(Yii::t('hipanel/reminder', 'View all'), ['/reminder/index']) ?></li>
+    <li class="footer"><?= Html::a(Yii::t('hiqdev/yii2/reminder', 'View all'), ['/reminder/index']) ?></li>
 
 </ul>

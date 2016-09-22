@@ -2,7 +2,7 @@
 use hipanel\widgets\Box;
 
 $this->title = Yii::t('hipanel', 'Update');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('hipanel/reminder', 'Reminders'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('hiqdev/yii2/reminder', 'Reminders'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php Box::begin() ?>
