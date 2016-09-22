@@ -2,8 +2,8 @@
 
 namespace hiqdev\yii2\reminder\widgets;
 
-use hipanel\models\Reminder;
-use hiqdev\yii2\reminder\assets\ReminderTopAsset;
+use hiqdev\yii2\reminder\models\Reminder;
+use hiqdev\yii2\reminder\ReminderTopAsset;
 use Yii;
 use yii\base\Widget;
 use yii\helpers\Json;

@@ -3,6 +3,7 @@
 namespace hiqdev\yii2\reminder\widgets;
 
 use hipanel\assets\BootstrapDatetimepickerAsset;
+use hipanel\widgets\AjaxModal;
 use omnilight\assets\MomentAsset;
 use Yii;
 use yii\base\Widget;

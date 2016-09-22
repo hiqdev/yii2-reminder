@@ -9,7 +9,7 @@
  * @copyright Copyright (c) 2014-2016, HiQDev (http://hiqdev.com/)
  */
 
-namespace hiqdev\yii2\reminder\assets;
+namespace hiqdev\yii2\reminder;
 
 use omnilight\assets\MomentAsset;
 use yii\web\AssetBundle;
