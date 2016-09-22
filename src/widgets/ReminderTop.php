@@ -18,10 +18,10 @@ class ReminderTop extends Widget
         parent::init();
         Yii::$app->assetManager->forceCopy = true;
         $reminderOptions = Json::encode([
-            'listUrl' => Url::to('@reminder/ajax-reminders-list'),
-            'deleteUrl' => Url::to('@reminder/delete'),
-            'updateUrl' => Url::to('@reminder/update'),
-            'getCountUrl' => Url::to('@reminder/get-count'),
+            'listUrl' => Url::to('/reminder/reminder/ajax-reminders-list'),
+            'deleteUrl' => Url::to('/reminder/reminder/delete'),
+            'updateUrl' => Url::to('/reminder/reminder/update'),
+            'getCountUrl' => Url::to('/reminder/reminder/get-count'),
             'loaderTemplate' => $this->loaderTemplate,
         ]);
         $this->registerClientScript($reminderOptions);

@@ -31,10 +31,10 @@ class ReminderButton extends Widget
             'id' => $modalId,
             'modalFormId' => 'reminder-form-' . $this->object_id,
             'scenario' => 'create',
-            'actionUrl' => ['@reminder/create-modal', 'object_id' => $this->object_id],
-            'handleSubmit' => Url::toRoute('@reminder/create'),
+            'actionUrl' => ['/reminder/reminder/create-modal', 'object_id' => $this->object_id],
+            'handleSubmit' => Url::toRoute('/reminder/reminder/create'),
             'size' => Modal::SIZE_DEFAULT,
-            'header' => Html::tag('h4', Yii::t('hipanel/reminder', 'Create new reminder'), ['class' => 'modal-title']),
+            'header' => Html::tag('h4', Yii::t('hiqdev/yii2/hipanel/reminder', 'Create new reminder'), ['class' => 'modal-title']),
             'toggleButton' => $this->getToggleButton(),
         ]);
     }

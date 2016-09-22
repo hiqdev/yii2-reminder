@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var integer $count */
 /* @var array $reminders */
 /* @var array $remindInOptions */
-/* @var \hipanel\models\Reminder $reminder */
+/* @var \hiqdev\yii2\reminder\models\Reminder $reminder */
 /* @var string $loaderTemplate */
 
 ?>
@@ -22,6 +22,6 @@ use yii\helpers\Html;
     <li class="reminder-body">
         <?= $loaderTemplate ?>
     </li>
-    <li class="footer"><?= Html::a(Yii::t('hiqdev/yii2/reminder', 'View all'), ['/reminder/index']) ?></li>
+    <li class="footer"><?= Html::a(Yii::t('hiqdev/yii2/reminder', 'View all'), ['/reminder/reminder/index']) ?></li>
 
 </ul>

@@ -17,7 +17,4 @@ namespace hiqdev\yii2\reminder;
  */
 class Module extends \yii\base\Module
 {
-//    public $controllerMap = [
-//        'reminder' => 'hiqdev\yii2\reminder\controllers\ReminderController',
-//    ];
 }
