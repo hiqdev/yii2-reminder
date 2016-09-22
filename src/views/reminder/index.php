@@ -16,7 +16,6 @@ $representation = Yii::$app->request->get('representation');
 <?php $page = IndexPage::begin([
     'model' => $model,
     'dataProvider' => $dataProvider,
-    'searchView' => '@hipanel/views/reminder/_search',
 ]) ?>
     <?php $page->setSearchFormData(compact([])) ?>
 
