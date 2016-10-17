@@ -42,7 +42,6 @@
         }
     ],
     "require": {
-        "hiqdev/hipanel-module-client": "*",
         "omnilight/yii2-momentjs": "*"
     },
     "require-dev": {
