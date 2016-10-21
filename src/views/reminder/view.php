@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'boxed' => false,
             'model' => $model,
             'columns' => [
+                'description',
                 'periodicity',
                 'message',
                 'next_time',
