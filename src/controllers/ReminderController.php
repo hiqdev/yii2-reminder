@@ -122,12 +122,12 @@ class ReminderController extends \hipanel\base\CrudController
 
     public function getPeriodicityOptions()
     {
-        return $this->getRefs('type,periodicity', 'hipanel/reminder');
+        return $this->getRefs('type,periodicity', 'hiqdev/yii2/reminder');
     }
 
     public function getTypeReminder()
     {
-        return $this->getRefs('type,reminder', 'hipanel/reminder');
+        return $this->getRefs('type,reminder', 'hiqdev/yii2/reminder');
     }
 
     public function actionGetCount()
