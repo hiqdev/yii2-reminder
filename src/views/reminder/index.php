@@ -9,13 +9,9 @@ $this->params['subtitle'] = array_filter(Yii::$app->request->get($model->formNam
 $this->params['breadcrumbs'][] = $this->title;
 
 $representation = Yii::$app->request->get('representation');
-$indexPageOptions = ['model' => $model, 'dataProvider' => $dataProvider];
-if (!Yii::$app->user->can('support')) {
-   $indexPageOptions['layout'] = 'noSearch';
-}
 ?>
 <?php Pjax::begin(array_merge(Yii::$app->params['pjax'], ['enablePushState' => true])) ?>
-<?php $page = IndexPage::begin($indexPageOptions) ?>
+<?php $page = IndexPage::begin(['model' => $model, 'dataProvider' => $dataProvider, 'layout' => 'noSearch']) ?>
 
 <?php $page->beginContent('show-actions') ?>
 <?= $page->renderLayoutSwitcher() ?>&nbsp;<?= $page->renderPerPage() ?>

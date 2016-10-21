@@ -114,7 +114,7 @@ class ReminderController extends \hipanel\base\CrudController
                     $remindInOptions = Reminder::reminderNextTimeOptions();
                     $offset = Yii::$app->request->post('offset');
 
-                    return compact(['reminders', 'remindInOptions', 'offset']);
+                    return compact('reminders', 'remindInOptions', 'offset');
                 }
             ]
         ];
@@ -134,7 +134,7 @@ class ReminderController extends \hipanel\base\CrudController
     {
         if (Yii::$app->request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
-            $count = Reminder::find()->toSite()->count();
+            $count = Reminder::find()->toSite()->own()->count();
 
             return compact('count');
         }

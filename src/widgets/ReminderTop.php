@@ -29,7 +29,7 @@ class ReminderTop extends Widget
 
     public function run()
     {
-        $count = Reminder::find()->toSite()->count();
+        $count = Reminder::find()->toSite()->own()->count();
         $remindInOptions = Reminder::reminderNextTimeOptions();
         return $this->render('ReminderTop', [
             'count' => $count,
