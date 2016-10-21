@@ -74,6 +74,7 @@ class ReminderController extends \hipanel\base\CrudController
             ],
             'update' => [
                 'class' => SmartUpdateAction::class,
+                'success' => Yii::t('hiqdev/yii2/reminder', 'Reminder was changed'),
                 'on beforeSave' => function ($event) {
                     /** @var \hipanel\actions\Action $action */
                     $action = $event->sender;
@@ -99,12 +100,7 @@ class ReminderController extends \hipanel\base\CrudController
             ],
             'delete' => [
                 'class' => SmartDeleteAction::class,
-                'POST html | POST pjax' => [
-                    'save' => true,
-                    'success' => [
-                        'class' => RedirectAction::class,
-                    ],
-                ],
+                'success' => Yii::t('hiqdev/yii2/reminder', 'Reminder deleted'),
             ],
             'ajax-reminders-list' => [
                 'class' => RenderAjaxAction::class,
