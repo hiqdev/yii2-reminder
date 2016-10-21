@@ -14,7 +14,7 @@ $lng = Yii::$app->language;
 $this->registerJs("
 $('#reminder-from_time').datetimepicker({
     format: 'YYYY-MM-DD HH:mm',
-    stepping: 60,
+    stepping: 10,
     locale: '{$lng}',
     showClose: true,
     defaultDate: moment().add(1, 'hour').format('YYYY-MM-DD HH:mm')
