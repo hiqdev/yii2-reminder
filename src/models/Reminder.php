@@ -5,6 +5,7 @@ namespace hiqdev\yii2\reminder\models;
 use DateTime;
 use hipanel\base\Model;
 use hipanel\base\ModelTrait;
+use hipanel\helpers\Url;
 use Yii;
 
 class Reminder extends Model
@@ -148,5 +149,15 @@ class Reminder extends Model
         } else {
             return $offset;
         }
+    }
+
+    public function getObjectLabel()
+    {
+        return Yii::t('hiqdev/yii2/reminder', "{0} ID #{1}", [Yii::t('hiqdev/yii2/reminder', ucfirst($this->objectName)), $this->object_id]);
+    }
+
+    public function getObjectLink()
+    {
+        return Url::toRoute([sprintf("@%s/view", $this->objectName), 'id' => $this->object_id]);
     }
 }
