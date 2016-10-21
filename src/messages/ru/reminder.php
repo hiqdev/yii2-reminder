@@ -29,4 +29,5 @@ return [
     'Remind in' => 'Напомнить',
     'Don\'t remind' => 'Не напоминать',
     'You have no reminders' => 'У вас нет напоминаний',
+    'Description' => 'Описание',
 ];
