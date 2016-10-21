@@ -14,10 +14,12 @@ use yii\helpers\Url;
             <li id="reminder-<?= $reminder->id ?>">
                 <div>
                     <h4>
-                        <?= Html::beginTag('a', ['href' => Url::toRoute([sprintf("@%s/view", $reminder->objectName), 'id' => $reminder->object_id])]) ?>
-                        <?= Yii::t('hiqdev/yii2/reminder', "{0} ID #{1}", [Yii::t('hiqdev/yii2/reminder', ucfirst($reminder->objectName)), $reminder->object_id]) ?>
-                        <small><?= Yii::t('hiqdev/yii2/reminder', 'Next time') ?>
-                            : <?= $reminder->calculateClientNextTime($offset) ?></small>
+                        <?= Html::beginTag('a', ['href' => $reminder->objectLink]) ?>
+                        <?= $reminder->objectLabel ?>
+                        <small>
+                            <?= Yii::t('hiqdev/yii2/reminder', 'Next time') ?>
+                            : <?= $reminder->calculateClientNextTime($offset) ?>
+                        </small>
                         <?= Html::endTag('a') ?>
                     </h4>
                     <p>
@@ -49,6 +51,7 @@ use yii\helpers\Url;
             </li>
         <?php endforeach; ?>
     <?php else : ?>
-        <li class="margin text-muted" style="font-size: small"><?= Yii::t('hiqdev/yii2/reminder', 'You have no reminders') ?></li>
+        <li class="margin text-muted"
+            style="font-size: small"><?= Yii::t('hiqdev/yii2/reminder', 'You have no reminders') ?></li>
     <?php endif ?>
 </ul>
