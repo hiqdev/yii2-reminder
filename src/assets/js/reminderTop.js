@@ -56,6 +56,7 @@
                     elem.html(_this.settings.loaderTemplate);
                 },
                 success: function (data) {
+                    _this.updateCounts();
                     elem.html(data);
                 }
             });
