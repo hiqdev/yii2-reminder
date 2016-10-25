@@ -5,6 +5,8 @@
             'deleteUrl': undefined,
             'updateUrl': undefined,
             'getCountUrl': undefined,
+            'updateText': undefined,
+            'doNotRemindText': undefined,
             'loaderTemplate': undefined,
             'updateInterval': 60 * 1000 // 1 minute
         };
@@ -84,6 +86,7 @@
                 success: function () {
                     _this.updateCounts();
                     _this.getRemindersList();
+                    _this.notify('delete');
                 }
             });
         },
@@ -116,11 +119,24 @@
                 success: function (count) {
                     _this.updateCounts();
                     _this.getRemindersList();
+                    _this.notify('update');
                 }
             });
         },
 
         // Other functions
+        notify: function (action) {
+            var _this = this;
+            new PNotify({
+                text: action === 'update' ? _this.settings.updateText : _this.settings.doNotRemindText,
+                type: 'success',
+                buttons: {
+                    sticker: false
+                },
+                icon: false,
+                styling: 'bootstrap3'
+            });
+        },
         updateCounts: function () {
             $.ajax({
                 url: this.settings.getCountUrl,
