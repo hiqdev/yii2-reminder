@@ -22,6 +22,8 @@ class ReminderTop extends Widget
             'deleteUrl' => Url::to('/reminder/reminder/delete'),
             'updateUrl' => Url::to('/reminder/reminder/update'),
             'getCountUrl' => Url::to('/reminder/reminder/get-count'),
+            'updateText' => Yii::t('hiqdev/yii2/reminder', 'Reminder was updated'),
+            'doNotRemindText' => Yii::t('hiqdev/yii2/reminder', 'Reminder was deleted'),
             'loaderTemplate' => $this->loaderTemplate,
         ]);
         $this->registerClientScript($reminderOptions);
