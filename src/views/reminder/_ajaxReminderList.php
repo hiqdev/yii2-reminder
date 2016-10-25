@@ -40,6 +40,15 @@ use yii\helpers\Url;
                             ) ?>
                         <?php endforeach ?>
                         <br>
+                        <?php if ($reminder->periodicity !== 'once') : ?>
+                            <?= Html::button(Yii::t('hiqdev/yii2/reminder', 'Remind next time'), [
+                                'class' => 'btn btn-xs btn-block btn-info reminder-update lg-mt-10 md-mt-10',
+                                'data' => [
+                                    'reminder-id' => $reminder->id,
+                                    'reminder-action' => $reminder->periodicityNextTime,
+                                ],
+                            ]) ?>
+                        <?php endif; ?>
                         <?= Html::button(Yii::t('hiqdev/yii2/reminder', 'Don\'t remind'), [
                             'class' => 'btn btn-xs btn-block btn-danger reminder-delete lg-mt-10 md-mt-10',
                             'data' => [
