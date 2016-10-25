@@ -74,7 +74,6 @@ class ReminderController extends \hipanel\base\CrudController
             ],
             'update' => [
                 'class' => SmartUpdateAction::class,
-                'success' => Yii::t('hiqdev/yii2/reminder', 'Reminder was changed'),
                 'on beforeSave' => function ($event) {
                     /** @var \hipanel\actions\Action $action */
                     $action = $event->sender;
