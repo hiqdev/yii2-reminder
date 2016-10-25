@@ -100,7 +100,7 @@ class ReminderController extends \hipanel\base\CrudController
             ],
             'delete' => [
                 'class' => SmartDeleteAction::class,
-                'success' => Yii::t('hiqdev/yii2/reminder', 'Reminder deleted'),
+                'success' => Yii::t('hiqdev/yii2/reminder', 'Reminder removed'),
             ],
             'ajax-reminders-list' => [
                 'class' => RenderAjaxAction::class,
