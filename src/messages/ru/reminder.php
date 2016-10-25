@@ -39,5 +39,5 @@ return [
     'Description' => 'Описание',
     'Reminder is created' => 'Напоминание создано',
     'Reminder deleted' => 'Напоминание удалено',
-    'Reminder was changed' => 'Напоминание изменено',
+    'Reminder updated' => 'Напоминание изменено',
 ];
