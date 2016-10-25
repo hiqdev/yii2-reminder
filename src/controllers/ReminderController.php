@@ -53,6 +53,11 @@ class ReminderController extends \hipanel\base\CrudController
             ],
             'index' => [
                 'class' => IndexAction::class,
+                'data' => function ($action) {
+                    return [
+                        'periodicityOptions' => $action->controller->getPeriodicityOptions(),
+                    ];
+                }
             ],
             'create-modal' => [
                 'class' => SmartCreateAction::class,
