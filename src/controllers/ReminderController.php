@@ -88,6 +88,7 @@ class ReminderController extends \hipanel\base\CrudController
                 },
                 'POST ajax' => [
                     'save' => true,
+                    'flash' => false,
                     'success' => [
                         'class' => RenderJsonAction::class,
                         'return' => function ($action) {
