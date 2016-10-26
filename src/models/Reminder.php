@@ -6,6 +6,7 @@ use DateTime;
 use hipanel\base\Model;
 use hipanel\base\ModelTrait;
 use hipanel\helpers\Url;
+use hiqdev\higrid\DataColumn;
 use Yii;
 
 class Reminder extends Model
@@ -53,7 +54,7 @@ class Reminder extends Model
 
             // Create
             [['object_id', 'type', 'periodicity', 'from_time', 'offset'], 'required', 'on' => self::SCENARIO_CREATE],
-            [['message'], 'string', 'on' => self::SCENARIO_CREATE],
+            [['message', 'next_time'], 'string', 'on' => self::SCENARIO_CREATE],
 
             // Update
             [['id'], 'required', 'on' => 'update'],
@@ -93,6 +94,12 @@ class Reminder extends Model
         return $result;
     }
 
+    public function getPeriodicityNextTime()
+    {
+        $modify = (ctype_digit(substr($this->periodicity, 0, 1))) ? '+ ' . $this->periodicity : '+1 ' . $this->periodicity;
+        return $modify;
+    }
+
     /**
      * {@inheritdoc}
      * @return ReminderQuery
@@ -114,18 +121,24 @@ class Reminder extends Model
         }
     }
 
+    protected function getNextTime()
+    {
+        return (new DateTime($this->next_time))->modify($this->reminderChange)->format('Y-m-d H:i:s');
+    }
+
     public function insertWithClientOffset()
     {
         if ($this->scenario == self::SCENARIO_CREATE) {
             $offset = $this->toServerTime($this->offset);
-            $this->from_time = (new DateTime($this->from_time))->modify($offset . ' minutes')->format('Y-m-d H:i:s');
+            $modyfy = $offset . ' minutes';
+            $this->from_time = $this->next_time = (new DateTime($this->from_time))->modify($modyfy)->format('Y-m-d H:i:s');
         }
     }
 
     public function calculateClientNextTime($offset)
     {
         $next_time = (new DateTime($this->next_time))->modify($this->toClientTime($offset) . ' minutes');
-        return Yii::$app->formatter->asDatetime($next_time, 'short');
+        return Yii::$app->formatter->asDatetime($next_time->modify($this->periodicityNextTime), 'short');
     }
 
     protected function getSign($offset)
@@ -153,7 +166,7 @@ class Reminder extends Model
 
     public function getObjectLabel()
     {
-        return Yii::t('hiqdev/yii2/reminder', "{0} ID #{1}", [Yii::t('hiqdev/yii2/reminder', ucfirst($this->objectName)), $this->object_id]);
+        return Yii::t('hiqdev/yii2/reminder', "{0} #{1}", [Yii::t('hiqdev/yii2/reminder', ucfirst($this->objectName)), $this->object_id]);
     }
 
     public function getObjectLink()
