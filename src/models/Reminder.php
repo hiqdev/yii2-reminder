@@ -34,11 +34,11 @@ class Reminder extends Model
     public static function reminderNextTimeOptions()
     {
         return [
-            '+15 minutes' => Yii::t(self::$i18nDictionary, '15m'),
-            '+30 minutes' => Yii::t(self::$i18nDictionary, '30m'),
-            '+1 hour' => Yii::t(self::$i18nDictionary, '1h'),
-            '+12 hours' => Yii::t(self::$i18nDictionary, '12h'),
-            '+1 day' => Yii::t(self::$i18nDictionary, '1d'),
+            '+15 minutes' => Yii::t('hiqdev/yii2/reminder', '15m'),
+            '+30 minutes' => Yii::t('hiqdev/yii2/reminder', '30m'),
+            '+1 hour' => Yii::t('hiqdev/yii2/reminder', '1h'),
+            '+12 hours' => Yii::t('hiqdev/yii2/reminder', '12h'),
+            '+1 day' => Yii::t('hiqdev/yii2/reminder', '1d'),
         ];
     }
 
@@ -72,11 +72,11 @@ class Reminder extends Model
     public function attributeLabels()
     {
         return $this->mergeAttributeLabels([
-            'periodicity' => Yii::t(self::$i18nDictionary, 'Periodicity'),
-            'from_time' => Yii::t(self::$i18nDictionary, 'When the recall?'),
-            'next_time' => Yii::t(self::$i18nDictionary, 'Next time'),
-            'till_time' => Yii::t(self::$i18nDictionary, 'Remind till'),
-            'message' => Yii::t(self::$i18nDictionary, 'Message'),
+            'periodicity' => Yii::t('hiqdev/yii2/reminder', 'Periodicity'),
+            'from_time' => Yii::t('hiqdev/yii2/reminder', 'When the recall?'),
+            'next_time' => Yii::t('hiqdev/yii2/reminder', 'Next time'),
+            'till_time' => Yii::t('hiqdev/yii2/reminder', 'Remind till'),
+            'message' => Yii::t('hiqdev/yii2/reminder', 'Message'),
         ]);
     }
 
