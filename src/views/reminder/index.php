@@ -4,8 +4,6 @@ use hipanel\widgets\IndexPage;
 use hipanel\widgets\Pjax;
 use hiqdev\yii2\reminder\grid\ReminderGridView;
 
-/** @var array $periodicityOptions */
-
 $this->title = Yii::t('hiqdev/yii2/reminder', 'Reminders');
 $this->params['subtitle'] = array_filter(Yii::$app->request->get($model->formName(), [])) ? Yii::t('hipanel', 'filtered list') : Yii::t('hipanel', 'full list');
 $this->params['breadcrumbs'][] = $this->title;
@@ -26,7 +24,6 @@ $representation = Yii::$app->request->get('representation');
 <?php $page->beginContent('table') ?>
 <?php $page->beginBulkForm() ?>
 <?= ReminderGridView::widget([
-    'periodicityOptions' => $periodicityOptions,
     'boxed' => false,
     'dataProvider' => $dataProvider,
     'tableOptions' => [

@@ -13,8 +13,6 @@ class Reminder extends Model
 {
     use ModelTrait;
 
-    public static $i18nDictionary = 'hiqdev/yii2/reminder';
-
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
     const SCENARIO_DELETE = 'delete';
@@ -49,7 +47,7 @@ class Reminder extends Model
     {
         return [
             [['id', 'object_id', 'client_id', 'state_id', 'type_id'], 'integer'],
-            [['class_name', 'periodicity', 'from_time', 'till_time', 'next_time'], 'string'],
+            [['class_name', 'periodicity', 'from_time', 'till_time', 'next_time', 'periodicity_label'], 'string'],
             [['to_site'], 'boolean'],
 
             // Create
