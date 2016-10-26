@@ -35,12 +35,32 @@
                 }
             }, this.settings.updateInterval);
         },
+        getDeferListener: function () {
+            var _this = this;
+            $(_this.element).find('.reminder-defer').each(function (i, elem) {
+                var $elem = $(elem);
+                $elem.popover({
+                    content: $('#popover-' + $elem.data('reminder-id')).html(),
+                    html: true,
+                    trigger: 'click'
+                });
+            });
+            $(document).on('click', '.reminder-defer', function (ev) {
+                ev.preventDefault();
+                $('.reminder-defer').not(this).popover('hide');
+
+                return false;
+            });
+        },
 
         // Get Reminders
         getRemindersListListener: function () {
             var _this = this;
-            $(_this.element).on('show.bs.dropdown', function (ev) {
+            $(_this.element).on('shown.bs.dropdown', function (ev) {
                 _this.getRemindersList(ev);
+            });
+            $(_this.element).on('hide.bs.dropdown', function (ev) {
+                $('.reminder-defer').popover('hide');
             });
         },
         getRemindersList: function (ev) {
@@ -53,11 +73,13 @@
                     'offset': _this.clientUtcOffset()
                 },
                 beforeSend: function () {
+                    $('.reminder-defer').popover('hide');
                     elem.html(_this.settings.loaderTemplate);
                 },
                 success: function (data) {
                     _this.updateCounts();
                     elem.html(data);
+                    _this.getDeferListener();
                 }
             });
         },
