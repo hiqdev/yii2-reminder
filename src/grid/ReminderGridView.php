@@ -10,24 +10,12 @@ use yii\helpers\Html;
 
 class ReminderGridView extends BoxedGridView
 {
-    public static $periodicityOptions;
-
-    /**
-     * @param mixed $periodicityOptions
-     */
-    public static function setPeriodicityOptions($periodicityOptions)
-    {
-        self::$periodicityOptions = $periodicityOptions;
-    }
-
     public static function defaultColumns()
     {
-        $periodicity = self::$periodicityOptions;
-
         return [
             'periodicity' => [
-                'value' => function ($model) use ($periodicity) {
-                    return Yii::t('hiqdev/yii2/reminder', $periodicity[$model->periodicity]);
+                'value' => function ($model) {
+                    return Yii::t('hiqdev/yii2/reminder', $model->periodicity_label);
                 },
                 'filter' => false,
             ],
