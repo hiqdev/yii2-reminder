@@ -4,7 +4,6 @@ namespace hiqdev\yii2\reminder\controllers;
 
 use DateTime;
 use hipanel\actions\IndexAction;
-use hipanel\actions\OrientationAction;
 use hipanel\actions\RedirectAction;
 use hipanel\actions\RenderAjaxAction;
 use hipanel\actions\RenderJsonAction;
@@ -39,12 +38,6 @@ class ReminderController extends \hipanel\base\CrudController
     public function actions()
     {
         return [
-            'set-orientation' => [
-                'class' => OrientationAction::class,
-                'allowedRoutes' => [
-                    'reminder/index'
-                ]
-            ],
             'validate-form' => [
                 'class' => ValidateFormAction::class,
             ],
