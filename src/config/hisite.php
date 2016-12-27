@@ -13,14 +13,16 @@ return [
     'components' => [
         'i18n' => [
             'translations' => [
-                'hiqdev/yii2/reminder' => [
+                'hiqdev:yii2:reminder' => [
                     'class' => \yii\i18n\PhpMessageSource::class,
                     'basePath' => '@hiqdev/yii2/reminder/messages',
-                    'fileMap' => [
-                        'hiqdev/yii2/reminder' => 'reminder.php',
-                    ],
                 ],
             ],
+        ],
+    ],
+    'modules' => [
+        'reminder' => [
+            'class' => \hiqdev\yii2\reminder\Module::class,
         ],
     ],
 ];

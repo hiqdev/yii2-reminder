@@ -4,7 +4,7 @@ use hipanel\widgets\IndexPage;
 use hipanel\widgets\Pjax;
 use hiqdev\yii2\reminder\grid\ReminderGridView;
 
-$this->title = Yii::t('hiqdev/yii2/reminder', 'Reminders');
+$this->title = Yii::t('hiqdev:yii2:reminder', 'Reminders');
 $this->params['subtitle'] = array_filter(Yii::$app->request->get($model->formName(), [])) ? Yii::t('hipanel', 'filtered list') : Yii::t('hipanel', 'full list');
 $this->params['breadcrumbs'][] = $this->title;
 

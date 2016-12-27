@@ -17,11 +17,11 @@ use yii\helpers\Html;
 </a>
 <ul class="dropdown-menu">
     <li class="header">
-        <?= Yii::t('hiqdev/yii2/reminder', 'Reminders') ?>
+        <?= Yii::t('hiqdev:yii2:reminder', 'Reminders') ?>
     </li>
     <li class="reminder-body">
         <?= $loaderTemplate ?>
     </li>
-    <li class="footer"><?= Html::a(Yii::t('hiqdev/yii2/reminder', 'View all'), ['/reminder/reminder/index']) ?></li>
+    <li class="footer"><?= Html::a(Yii::t('hiqdev:yii2:reminder', 'View all'), ['/reminder/reminder/index']) ?></li>
 
 </ul>

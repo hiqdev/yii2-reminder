@@ -36,8 +36,8 @@ $('#reminder-from_time').datetimepicker({
 <?php endif ?>
 
 <?= $form->field($model, "type")->radioList([
-    Reminder::TYPE_SITE => Yii::t('hiqdev/yii2/reminder', 'To site'),
-    Reminder::TYPE_MAIL => Yii::t('hiqdev/yii2/reminder', 'By mail'),
+    Reminder::TYPE_SITE => Yii::t('hiqdev:yii2:reminder', 'To site'),
+    Reminder::TYPE_MAIL => Yii::t('hiqdev:yii2:reminder', 'By mail'),
 ]) ?>
 
 <?= $form->field($model, "periodicity")->dropDownList(Yii::$app->controller->getPeriodicityOptions()) ?>

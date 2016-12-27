@@ -49,7 +49,7 @@ use yii\helpers\Url;
                                         ],
                                     ];
                                 }
-                                print Html::button(Yii::t('hiqdev/yii2/reminder', 'Defer'), $options);
+                                print Html::button(Yii::t('hiqdev:yii2:reminder', 'Defer'), $options);
                                 ?>
                                 <button type="button" class="btn btn-default btn-xs reminder-defer" data-reminder-id="<?= $reminder->id ?>" data-container="body" data-toggle="popover" data-placement="bottom">
                                     <span class="caret"></span>
@@ -57,7 +57,7 @@ use yii\helpers\Url;
                                 <div id="popover-<?= $reminder->id ?>" style="display: none">
                                     <?php foreach ($remindInOptions as $time => $label) : ?>
                                         <?= Html::button(
-                                            Yii::t('hiqdev/yii2/reminder', $label),
+                                            Yii::t('hiqdev:yii2:reminder', $label),
                                             [
                                                 'class' => 'btn btn-xs btn-link reminder-update',
                                                 'data' => [
@@ -71,7 +71,7 @@ use yii\helpers\Url;
                             </div>
                         </div>
                         <div class="col-xs-6">
-                            <?= Html::button(Yii::t('hiqdev/yii2/reminder', 'Don\'t remind'), [
+                            <?= Html::button(Yii::t('hiqdev:yii2:reminder', 'Don\'t remind'), [
                                 'class' => 'btn btn-xs reminder-delete btn-link text-danger',
                                 'data' => [
                                     'reminder-id' => $reminder->id,
@@ -80,10 +80,10 @@ use yii\helpers\Url;
                         </div>
                     </div>
                     <!--small>
-                        <?= Yii::t('hiqdev/yii2/reminder', 'Remind in') ?>:
+                        <?= Yii::t('hiqdev:yii2:reminder', 'Remind in') ?>:
                         <?php foreach ($remindInOptions as $time => $label) : ?>
                             <?= Html::button(
-                        Yii::t('hiqdev/yii2/reminder', $label),
+                        Yii::t('hiqdev:yii2:reminder', $label),
                         [
                             'class' => 'btn btn-xs btn-link reminder-update',
                             'data' => [
@@ -95,7 +95,7 @@ use yii\helpers\Url;
                         <?php endforeach ?>
                         <br>
                         <?php if ($reminder->periodicity !== 'once') : ?>
-                            <?= Html::button(Yii::t('hiqdev/yii2/reminder', 'Remind next time'), [
+                            <?= Html::button(Yii::t('hiqdev:yii2:reminder', 'Remind next time'), [
                         'class' => 'btn btn-xs btn-block btn-info reminder-update lg-mt-10 md-mt-10',
                         'data' => [
                             'reminder-id' => $reminder->id,
@@ -103,7 +103,7 @@ use yii\helpers\Url;
                         ],
                     ]) ?>
                         <?php endif; ?>
-                        <?= Html::button(Yii::t('hiqdev/yii2/reminder', 'Don\'t remind'), [
+                        <?= Html::button(Yii::t('hiqdev:yii2:reminder', 'Don\'t remind'), [
                         'class' => 'btn btn-xs btn-block btn-danger reminder-delete lg-mt-10 md-mt-10',
                         'data' => [
                             'reminder-id' => $reminder->id,
@@ -115,6 +115,6 @@ use yii\helpers\Url;
         <?php endforeach; ?>
     <?php else : ?>
         <li class="margin text-muted"
-            style="font-size: small"><?= Yii::t('hiqdev/yii2/reminder', 'You have no reminders') ?></li>
+            style="font-size: small"><?= Yii::t('hiqdev:yii2:reminder', 'You have no reminders') ?></li>
     <?php endif ?>
 </ul>

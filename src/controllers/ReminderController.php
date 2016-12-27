@@ -20,6 +20,9 @@ use yii\web\Response;
 
 class ReminderController extends \hipanel\base\CrudController
 {
+    /// TODO extend from yii\web\Controller:
+    /// - no need to change viewPath
+    /// - abstract getting refs
     public function init()
     {
         $this->viewPath = '@hiqdev/yii2/reminder/views/reminder';
@@ -93,7 +96,7 @@ class ReminderController extends \hipanel\base\CrudController
             ],
             'delete' => [
                 'class' => SmartDeleteAction::class,
-                'success' => Yii::t('hiqdev/yii2/reminder', 'Reminder removed'),
+                'success' => Yii::t('hiqdev:yii2:reminder', 'Reminder removed'),
             ],
             'ajax-reminders-list' => [
                 'class' => RenderAjaxAction::class,
@@ -111,12 +114,12 @@ class ReminderController extends \hipanel\base\CrudController
 
     public function getPeriodicityOptions()
     {
-        return $this->getRefs('type,periodicity', 'hiqdev/yii2/reminder');
+        return $this->getRefs('type,periodicity', 'hiqdev:yii2:reminder');
     }
 
     public function getTypeReminder()
     {
-        return $this->getRefs('type,reminder', 'hiqdev/yii2/reminder');
+        return $this->getRefs('type,reminder', 'hiqdev:yii2:reminder');
     }
 
     public function actionGetCount()

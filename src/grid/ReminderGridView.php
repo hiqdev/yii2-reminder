@@ -15,13 +15,13 @@ class ReminderGridView extends BoxedGridView
         return [
             'periodicity' => [
                 'value' => function ($model) {
-                    return Yii::t('hiqdev/yii2/reminder', $model->periodicity_label);
+                    return Yii::t('hiqdev:yii2:reminder', $model->periodicity_label);
                 },
                 'filter' => false,
             ],
             'description' => [
                 'class' => DataColumn::class,
-                'label' => Yii::t('hiqdev/yii2/reminder', 'Description'),
+                'label' => Yii::t('hiqdev:yii2:reminder', 'Description'),
                 'value' => function ($model) {
                     return Html::a($model->objectLabel, $model->objectLink);
                 },
