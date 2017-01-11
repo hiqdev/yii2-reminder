@@ -48,14 +48,14 @@
         "hiqdev/hidev-php": "<2.0 || dev-master",
         "hiqdev/hidev-hiqdev": "<2.0 || dev-master"
     },
-    "extra": {
-        "config-plugin": {
-            "hisite": "src/config/hisite.php"
-        }
-    },
     "autoload": {
         "psr-4": {
             "hiqdev\\yii2\\reminder\\": "src"
+        }
+    },
+    "extra": {
+        "config-plugin": {
+            "hisite": "src/config/hisite.php"
         }
     },
     "repositories": [
