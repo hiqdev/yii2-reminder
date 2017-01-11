@@ -1,7 +1,10 @@
 ## hiqdev/yii2-reminder
 
-## [Under development]
+## [0.1] - 2017-01-11
 
+- Added CHANGELOG
+    - [a1a5df9] 2017-01-11 csfixed [@SilverFire]
+    - [88eed28] 2017-01-11 Added CHANGELOG [@SilverFire]
 - Changed translations category to `hiqdev:yii2:reminder`
     - [065555c] 2016-12-27 redone translation category to `hiqdev:yii2:reminder` [@hiqsol]
 - Added different fixes and enhancements
@@ -114,4 +117,7 @@ Extension inited
 [dd1875c]: https://github.com/hiqdev/yii2-reminder/commit/dd1875c
 [f7bd283]: https://github.com/hiqdev/yii2-reminder/commit/f7bd283
 [ca8b45a]: https://github.com/hiqdev/yii2-reminder/commit/ca8b45a
-[Under development]: https://github.com/hiqdev/yii2-reminder/releases
+[Under development]: https://github.com/hiqdev/yii2-reminder/compare/0.1...HEAD
+[88eed28]: https://github.com/hiqdev/yii2-reminder/commit/88eed28
+[0.1]: https://github.com/hiqdev/yii2-reminder/releases/tag/0.1
+[a1a5df9]: https://github.com/hiqdev/yii2-reminder/commit/a1a5df9

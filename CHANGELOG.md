@@ -1,7 +1,8 @@
 ## hiqdev/yii2-reminder
 
-## [Under development]
+## [0.1] - 2017-01-11
 
+- Added CHANGELOG ([@SilverFire])
 - Changed translations category to `hiqdev:yii2:reminder` ([@hiqsol])
 - Added different fixes and enhancements ([@hiqsol], [@tafid], [@SilverFire])
 
@@ -15,4 +16,5 @@
 [andreyklochok@gmail.com]: https://github.com/tafid
 [@BladeRoot]: https://github.com/BladeRoot
 [bladeroot@hiqdev.com]: https://github.com/BladeRoot
-[Under development]: https://github.com/hiqdev/yii2-reminder/releases
+[Under development]: https://github.com/hiqdev/yii2-reminder/compare/0.1...HEAD
+[0.1]: https://github.com/hiqdev/yii2-reminder/releases/tag/0.1
