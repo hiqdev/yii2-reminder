@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \hipanel\models\Reminder $model
+ * @var \hipanel\models\Reminder
  */
 // Set client offset
 $this->registerJs('$("#reminder-offset").val(moment().utcOffset())');

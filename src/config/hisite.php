@@ -1,12 +1,11 @@
 <?php
-
-/*
- * AdminLte Theme for hiqdev/yii2-reminder
+/**
+ * Reminder module for Yii2
  *
  * @link      https://github.com/hiqdev/yii2-reminder
  * @package   yii2-reminder
  * @license   BSD-3-Clause
- * @copyright Copyright (c) 2015-2016, HiQDev (http://hiqdev.com/)
+ * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
  */
 
 return [

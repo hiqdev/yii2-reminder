@@ -1,12 +1,11 @@
 <?php
-
-/*
- * HiPanel core package
+/**
+ * Reminder module for Yii2
  *
- * @link      https://hipanel.com/
- * @package   hipanel-core
+ * @link      https://github.com/hiqdev/yii2-reminder
+ * @package   yii2-reminder
  * @license   BSD-3-Clause
- * @copyright Copyright (c) 2014-2016, HiQDev (http://hiqdev.com/)
+ * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
  */
 
 namespace hiqdev\yii2\reminder;
@@ -29,6 +28,6 @@ class ReminderTopAsset extends AssetBundle
 
     public $depends = [
         JqueryAsset::class,
-        MomentAsset::class
+        MomentAsset::class,
     ];
 }

@@ -1,4 +1,12 @@
 <?php
+/**
+ * Reminder module for Yii2
+ *
+ * @link      https://github.com/hiqdev/yii2-reminder
+ * @package   yii2-reminder
+ * @license   BSD-3-Clause
+ * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
+ */
 
 namespace hiqdev\yii2\reminder\widgets;
 
@@ -36,7 +44,7 @@ class ReminderTop extends Widget
         return $this->render('ReminderTop', [
             'count' => $count,
             'remindInOptions' => $remindInOptions,
-            'loaderTemplate' => $this->loaderTemplate
+            'loaderTemplate' => $this->loaderTemplate,
         ]);
     }
 

@@ -1,10 +1,17 @@
 <?php
+/**
+ * Reminder module for Yii2
+ *
+ * @link      https://github.com/hiqdev/yii2-reminder
+ * @package   yii2-reminder
+ * @license   BSD-3-Clause
+ * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
+ */
 
 namespace hiqdev\yii2\reminder\controllers;
 
 use DateTime;
 use hipanel\actions\IndexAction;
-use hipanel\actions\RedirectAction;
 use hipanel\actions\RenderAjaxAction;
 use hipanel\actions\RenderJsonAction;
 use hipanel\actions\SmartCreateAction;
@@ -107,8 +114,8 @@ class ReminderController extends \hipanel\base\CrudController
                     $offset = Yii::$app->request->post('offset');
 
                     return compact('reminders', 'remindInOptions', 'offset');
-                }
-            ]
+                },
+            ],
         ];
     }
 

@@ -1,4 +1,12 @@
 <?php
+/**
+ * Reminder module for Yii2
+ *
+ * @link      https://github.com/hiqdev/yii2-reminder
+ * @package   yii2-reminder
+ * @license   BSD-3-Clause
+ * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
+ */
 
 namespace hiqdev\yii2\reminder\grid;
 
@@ -33,8 +41,8 @@ class ReminderGridView extends BoxedGridView
             'next_time' => [
                 'filter' => false,
                 'contentOptions' => [
-                    'class' => 'reminder-next-time-modify'
-                ]
+                    'class' => 'reminder-next-time-modify',
+                ],
             ],
             'actions' => [
                 'class' => ActionColumn::class,

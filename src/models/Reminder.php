@@ -1,4 +1,12 @@
 <?php
+/**
+ * Reminder module for Yii2
+ *
+ * @link      https://github.com/hiqdev/yii2-reminder
+ * @package   yii2-reminder
+ * @license   BSD-3-Clause
+ * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
+ */
 
 namespace hiqdev\yii2\reminder\models;
 
@@ -6,7 +14,6 @@ use DateTime;
 use hipanel\base\Model;
 use hipanel\base\ModelTrait;
 use hipanel\helpers\Url;
-use hiqdev\higrid\DataColumn;
 use Yii;
 
 class Reminder extends Model
@@ -60,7 +67,7 @@ class Reminder extends Model
             [['from_time', 'next_time', 'till_time', 'reminderChange', 'offset'], 'string', 'on' => self::SCENARIO_UPDATE],
 
             // Delete
-            [['id'], 'required', 'on' => self::SCENARIO_DELETE]
+            [['id'], 'required', 'on' => self::SCENARIO_DELETE],
         ];
     }
 
@@ -114,7 +121,7 @@ class Reminder extends Model
      */
     public function updateNextTime()
     {
-        if ($this->scenario == self::SCENARIO_UPDATE) {
+        if ($this->scenario === self::SCENARIO_UPDATE) {
             $this->next_time = (new DateTime($this->next_time))->modify($this->reminderChange)->format('Y-m-d H:i:s');
         }
     }
@@ -126,7 +133,7 @@ class Reminder extends Model
 
     public function insertWithClientOffset()
     {
-        if ($this->scenario == self::SCENARIO_CREATE) {
+        if ($this->scenario === self::SCENARIO_CREATE) {
             $offset = $this->toServerTime($this->offset);
             $modyfy = $offset . ' minutes';
             $this->from_time = $this->next_time = (new DateTime($this->from_time))->modify($modyfy)->format('Y-m-d H:i:s');
@@ -164,11 +171,11 @@ class Reminder extends Model
 
     public function getObjectLabel()
     {
-        return Yii::t('hiqdev:yii2:reminder', "{0} #{1}", [Yii::t('hiqdev:yii2:reminder', ucfirst($this->objectName)), $this->object_id]);
+        return Yii::t('hiqdev:yii2:reminder', '{0} #{1}', [Yii::t('hiqdev:yii2:reminder', ucfirst($this->objectName)), $this->object_id]);
     }
 
     public function getObjectLink()
     {
-        return Url::toRoute([sprintf("@%s/view", $this->objectName), 'id' => $this->object_id]);
+        return Url::toRoute([sprintf('@%s/view', $this->objectName), 'id' => $this->object_id]);
     }
 }

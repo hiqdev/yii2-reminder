@@ -27,7 +27,7 @@ $representation = Yii::$app->request->get('representation');
         'boxed' => false,
         'dataProvider' => $dataProvider,
         'tableOptions' => [
-            'class' => 'table table-striped table-bordered table-condensed'
+            'class' => 'table table-striped table-bordered table-condensed',
         ],
         'columns' => [
             'checkbox',

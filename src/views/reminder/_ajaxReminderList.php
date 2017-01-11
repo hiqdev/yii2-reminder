@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
-use yii\helpers\Url;
 
 /* @var array $remindInOptions */
 /* @var array $reminders */
@@ -49,7 +48,7 @@ use yii\helpers\Url;
                                         ],
                                     ];
                                 }
-                                print Html::button(Yii::t('hiqdev:yii2:reminder', 'Defer'), $options);
+                                echo Html::button(Yii::t('hiqdev:yii2:reminder', 'Defer'), $options);
                                 ?>
                                 <button type="button" class="btn btn-default btn-xs reminder-defer" data-reminder-id="<?= $reminder->id ?>" data-container="body" data-toggle="popover" data-placement="bottom">
                                     <span class="caret"></span>

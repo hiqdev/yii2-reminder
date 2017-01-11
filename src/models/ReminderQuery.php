@@ -1,4 +1,12 @@
 <?php
+/**
+ * Reminder module for Yii2
+ *
+ * @link      https://github.com/hiqdev/yii2-reminder
+ * @package   yii2-reminder
+ * @license   BSD-3-Clause
+ * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
+ */
 
 namespace hiqdev\yii2\reminder\models;
 
@@ -10,7 +18,7 @@ class ReminderQuery extends ActiveQuery
     public function toSite()
     {
         $this->andWhere([
-            'to_site' => true
+            'to_site' => true,
         ]);
 
         return $this;
@@ -19,7 +27,7 @@ class ReminderQuery extends ActiveQuery
     public function own()
     {
         $this->andWhere([
-            'client_id' => Yii::$app->user->identity->id
+            'client_id' => Yii::$app->user->identity->id,
         ]);
 
         return $this;

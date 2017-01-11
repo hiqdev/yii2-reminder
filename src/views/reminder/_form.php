@@ -7,7 +7,7 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 /**
- * @var Reminder $model
+ * @var Reminder
  * @var array[] $periodicityOptions
  */
 $lng = Yii::$app->language;
@@ -35,23 +35,23 @@ $('#reminder-from_time').datetimepicker({
     <?= Html::activeHiddenInput($model, 'id') ?>
 <?php endif ?>
 
-<?= $form->field($model, "type")->radioList([
+<?= $form->field($model, 'type')->radioList([
     Reminder::TYPE_SITE => Yii::t('hiqdev:yii2:reminder', 'To site'),
     Reminder::TYPE_MAIL => Yii::t('hiqdev:yii2:reminder', 'By mail'),
 ]) ?>
 
-<?= $form->field($model, "periodicity")->dropDownList(Yii::$app->controller->getPeriodicityOptions()) ?>
+<?= $form->field($model, 'periodicity')->dropDownList(Yii::$app->controller->getPeriodicityOptions()) ?>
 
-<?= $form->field($model, "from_time") ?>
+<?= $form->field($model, 'from_time') ?>
 
 <?php
 if (Yii::$app->user->can('support')) {
     $model->client_id = Yii::$app->user->identity->id;
-    print $form->field($model, "client_id")->widget(ClientCombo::class);
+    echo $form->field($model, 'client_id')->widget(ClientCombo::class);
 }
 ?>
 
-<?= $form->field($model, "message")->textarea(['rows' => 4]) ?>
+<?= $form->field($model, 'message')->textarea(['rows' => 4]) ?>
 
 <?= Html::submitButton(Yii::t('hipanel', 'Submit'), ['class' => 'btn btn-success']) ?>
 
