@@ -161,11 +161,18 @@
             });
         },
         updateCounts: function () {
+            var that = this;
+
             $.ajax({
                 url: this.settings.getCountUrl,
                 dataType: 'json',
                 success: function (data) {
                     var reminderCounts = $('.reminder-counts');
+
+                    if (data.preventUpdates) {
+                        clearInterval(that.intervalId);
+                    }
+
                     if (data.count > 0) {
                         if (reminderCounts.hasClass('hidden')) {
                             reminderCounts.removeClass('hidden');

@@ -35,16 +35,6 @@ class ReminderController extends \hipanel\base\CrudController
         $this->viewPath = '@hiqdev/yii2/reminder/views/reminder';
     }
 
-    public function behaviors()
-    {
-        return [
-            [
-                'class' => HttpCache::class,
-                'only' => ['count'],
-            ],
-        ];
-    }
-
     public function actions()
     {
         return [
@@ -131,11 +121,20 @@ class ReminderController extends \hipanel\base\CrudController
 
     public function actionGetCount()
     {
-        if (Yii::$app->request->isAjax) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            $count = Reminder::find()->toSite()->own()->count();
-
-            return compact('count');
+        if (!Yii::$app->request->isAjax) {
+            return;
         }
+
+        if (Yii::$app->user->getIsGuest() || empty(Yii::$app->user->identity->getId())) {
+            return [
+                'preventUpdates' => true,
+            ];
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return [
+            'count' => Reminder::find()->toSite()->own()->count(),
+        ];
     }
 }
