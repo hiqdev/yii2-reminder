@@ -124,14 +124,13 @@ class ReminderController extends \hipanel\base\CrudController
         if (!Yii::$app->request->isAjax) {
             return;
         }
+        Yii::$app->response->format = Response::FORMAT_JSON;
 
         if (Yii::$app->user->getIsGuest() || empty(Yii::$app->user->identity->getId())) {
             return [
                 'preventUpdates' => true,
             ];
         }
-
-        Yii::$app->response->format = Response::FORMAT_JSON;
 
         return [
             'count' => Reminder::find()->toSite()->own()->count(),
