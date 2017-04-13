@@ -24,6 +24,20 @@ class ReminderQuery extends ActiveQuery
         return $this;
     }
 
+    /**
+     * Filter will return only reminders where the time has come
+     *
+     * @return self
+     */
+    public function triggered()
+    {
+        $this->andWhere([
+            'is_triggered' => true
+        ]);
+
+        return $this;
+    }
+
     public function own()
     {
         $this->andWhere([

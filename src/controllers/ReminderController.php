@@ -19,9 +19,9 @@ use hipanel\actions\SmartDeleteAction;
 use hipanel\actions\SmartUpdateAction;
 use hipanel\actions\ValidateFormAction;
 use hipanel\actions\ViewAction;
+use hiqdev\yii2\reminder\behaviors\RemindersCacheInvalidatorBehavior;
 use hiqdev\yii2\reminder\models\Reminder;
 use Yii;
-use yii\filters\HttpCache;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
@@ -32,7 +32,23 @@ class ReminderController extends \hipanel\base\CrudController
     /// - abstract getting refs
     public function init()
     {
+        parent::init();
+
         $this->viewPath = '@hiqdev/yii2/reminder/views/reminder';
+    }
+
+    public function behaviors()
+    {
+        return array_merge(parent::behaviors(), [
+            'remindersCacheInvalidator' => [
+                'class' => RemindersCacheInvalidatorBehavior::class,
+                'actions' => [
+                    'create',
+                    'update',
+                    'delete'
+                ]
+            ]
+        ]);
     }
 
     public function actions()
@@ -99,7 +115,7 @@ class ReminderController extends \hipanel\base\CrudController
                 'class' => RenderAjaxAction::class,
                 'view' => '_ajaxReminderList',
                 'params' => function ($action) {
-                    $reminders = Reminder::find()->toSite()->all();
+                    $reminders = Reminder::find()->own()->triggered()->toSite()->all();
                     $remindInOptions = Reminder::reminderNextTimeOptions();
                     $offset = Yii::$app->request->post('offset');
 
@@ -132,8 +148,12 @@ class ReminderController extends \hipanel\base\CrudController
             ];
         }
 
+        if (Yii::$app->cache->get(RemindersCacheInvalidatorBehavior::totalCountCacheKey()) === 0) {
+            return ['count' => 0];
+        }
+
         return [
-            'count' => Reminder::find()->toSite()->own()->count(),
+            'count' => Reminder::find()->own()->triggered()->toSite()->count(),
         ];
     }
 }

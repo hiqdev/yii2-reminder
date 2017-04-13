@@ -10,6 +10,7 @@
 
 namespace hiqdev\yii2\reminder\widgets;
 
+use hiqdev\yii2\reminder\behaviors\RemindersCacheInvalidatorBehavior;
 use hiqdev\yii2\reminder\models\Reminder;
 use hiqdev\yii2\reminder\ReminderTopAsset;
 use Yii;
@@ -39,8 +40,17 @@ class ReminderTop extends Widget
 
     public function run()
     {
-        $count = Reminder::find()->toSite()->own()->count();
+        $count = 0;
+        $totalCount = Yii::$app->cache->getOrSet(RemindersCacheInvalidatorBehavior::totalCountCacheKey(), function () {
+            return (int)Reminder::find()->own()->toSite()->count();
+        }, 86400); // 1 day
+
+        if ($totalCount > 0) {
+            $count = Reminder::find()->own()->triggered()->toSite()->count();
+        }
+
         $remindInOptions = Reminder::reminderNextTimeOptions();
+
         return $this->render('ReminderTop', [
             'count' => $count,
             'remindInOptions' => $remindInOptions,
