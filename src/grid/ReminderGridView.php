@@ -12,14 +12,15 @@ namespace hiqdev\yii2\reminder\grid;
 
 use hipanel\grid\ActionColumn;
 use hipanel\grid\BoxedGridView;
+use hiqdev\yii2\menus\grid\MenuColumn;
 use Yii;
 use yii\helpers\Html;
 
 class ReminderGridView extends BoxedGridView
 {
-    public static function defaultColumns()
+    public function columns()
     {
-        return [
+        return array_merge(parent::columns(), [
             'periodicity' => [
                 'value' => function ($model) {
                     return Yii::t('hiqdev:yii2:reminder', $model->periodicity_label);
@@ -47,6 +48,6 @@ class ReminderGridView extends BoxedGridView
                 'template' => '{view} {delete}',
                 'header' => Yii::t('hipanel', 'Actions'),
             ],
-        ];
+        ]);
     }
 }
