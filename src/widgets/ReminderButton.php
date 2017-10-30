@@ -51,7 +51,7 @@ class ReminderButton extends Widget
     public function run()
     {
         $modalId = $this->getModalId();
-        $this->view->registerCss("button[data-target='#{$modalId}'] {margin-top: -3px;}");
+        $this->view->registerCss("button[data-target='#{$modalId}'] {margin-top: -3px;} #{$modalId} .datepicker > div { display: inherit; }");
 
         return Html::button('<i class="fa fa-bell-o"></i>&nbsp;' . Yii::t('hiqdev:yii2:reminder', 'Create reminder'), array_merge([
             'class' => 'btn margin-bottom btn-info btn-xs pull-right',
