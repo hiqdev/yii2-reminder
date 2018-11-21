@@ -8,7 +8,7 @@
             'updateText': undefined,
             'doNotRemindText': undefined,
             'loaderTemplate': undefined,
-            'updateInterval': 60 * 1000 // 1 minute
+            'updateInterval': 60 * 1000 * 10 // 10 minutes
         };
 
     function Plugin(element, options) {
