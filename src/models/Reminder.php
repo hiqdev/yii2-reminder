@@ -16,6 +16,7 @@ use hipanel\base\ModelTrait;
 use hipanel\helpers\Url;
 use hipanel\models\Ref;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 class Reminder extends Model
 {
@@ -188,7 +189,18 @@ class Reminder extends Model
 
     public function getPeriodicityOptions()
     {
-        return Ref::getList('type,periodicity', 'hiqdev:yii2:reminder');
+        $result = Yii::$app->get('cache')->getOrSet([__CLASS__, __METHOD__, Yii::$app->language], function () {
+            $result = ArrayHelper::map(Ref::find()->where([
+                'gtype' => 'type,periodicity',
+                'select' => 'full',
+            ])->all(), 'name', function ($model) {
+                return Yii::t('hiqdev:yii2:reminder', $model->name);
+            });
+
+            return $result;
+        }, 86400 * 24); // 24 days
+
+        return $result;
     }
 
     public function getTypeOptions()
