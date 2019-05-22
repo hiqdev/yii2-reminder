@@ -14,20 +14,26 @@ use DateTime;
 use hipanel\base\Model;
 use hipanel\base\ModelTrait;
 use hipanel\helpers\Url;
+use hipanel\models\Ref;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 class Reminder extends Model
 {
     use ModelTrait;
 
     const SCENARIO_CREATE = 'create';
+
     const SCENARIO_UPDATE = 'update';
+
     const SCENARIO_DELETE = 'delete';
 
     const TYPE_SITE = 'site';
+
     const TYPE_MAIL = 'mail';
 
     public $offset;
+
     public $reminderChange;
 
     public function init()
@@ -54,7 +60,7 @@ class Reminder extends Model
     {
         return [
             [['id', 'object_id', 'client_id', 'state_id', 'type_id'], 'integer'],
-            [['class_name', 'periodicity', 'from_time', 'till_time', 'next_time', 'periodicity_label'], 'string'],
+            [['class_name', 'periodicity', 'from_time', 'till_time', 'next_time', 'periodicity_label', 'type_label'], 'string'],
             [['to_site'], 'boolean'],
 
             // Create
@@ -89,10 +95,8 @@ class Reminder extends Model
     {
         $result = '';
         if ($this->class_name) {
-            switch ($this->class_name) {
-                case 'thread':
-                    $result = 'ticket';
-                    break;
+            if (in_array($this->class_name, ['thread', 'message'])) {
+                $result = 'ticket';
             }
         }
 
@@ -102,6 +106,7 @@ class Reminder extends Model
     public function getPeriodicityNextTime()
     {
         $modify = (ctype_digit(substr($this->periodicity, 0, 1))) ? '+ ' . $this->periodicity : '+1 ' . $this->periodicity;
+
         return $modify;
     }
 
@@ -143,6 +148,7 @@ class Reminder extends Model
     public function calculateClientNextTime($offset)
     {
         $next_time = (new DateTime($this->next_time))->modify($this->toClientTime($offset) . ' minutes');
+
         return Yii::$app->formatter->asDatetime($next_time->modify($this->periodicityNextTime), 'short');
     }
 
@@ -177,5 +183,26 @@ class Reminder extends Model
     public function getObjectLink()
     {
         return Url::toRoute([sprintf('@%s/view', $this->objectName), 'id' => $this->object_id]);
+    }
+
+    public function getPeriodicityOptions()
+    {
+        $result = Yii::$app->get('cache')->getOrSet([__CLASS__, __METHOD__, Yii::$app->language], function () {
+            $result = ArrayHelper::map(Ref::find()->where([
+                'gtype' => 'type,periodicity',
+                'select' => 'full',
+            ])->all(), 'name', function ($model) {
+                return Yii::t('hiqdev:yii2:reminder', $model->name);
+            });
+
+            return $result;
+        }, 86400 * 24); // 24 days
+
+        return $result;
+    }
+
+    public function getTypeOptions()
+    {
+        return Ref::getList('type,reminder', 'hiqdev:yii2:reminder');
     }
 }

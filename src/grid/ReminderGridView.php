@@ -10,9 +10,10 @@
 
 namespace hiqdev\yii2\reminder\grid;
 
-use hipanel\grid\ActionColumn;
 use hipanel\grid\BoxedGridView;
+use hipanel\grid\RefColumn;
 use hiqdev\yii2\menus\grid\MenuColumn;
+use hiqdev\yii2\reminder\menus\ReminderActionsMenu;
 use Yii;
 use yii\helpers\Html;
 
@@ -27,12 +28,24 @@ class ReminderGridView extends BoxedGridView
                 },
                 'filter' => false,
             ],
+            'type' => [
+                'class' => RefColumn::class,
+                'attribute' => 'type_label',
+                'filterAttribute' => 'type_in',
+                'gtype' => 'type,reminder',
+                'i18nDictionary' => 'hiqdev:yii2:reminder',
+            ],
             'description' => [
                 'label' => Yii::t('hiqdev:yii2:reminder', 'Description'),
                 'value' => function ($model) {
                     return Html::a($model->objectLabel, $model->objectLink);
                 },
                 'format' => 'html',
+            ],
+            'object' => [
+                'label' => Yii::t('hiqdev:yii2:reminder', 'Object'),
+                'attribute' => 'objectLabel',
+                'filter' => false,
             ],
             'message' => [
                 'filter' => false,
@@ -44,9 +57,12 @@ class ReminderGridView extends BoxedGridView
                 ],
             ],
             'actions' => [
-                'class' => ActionColumn::class,
-                'template' => '{view} {delete}',
-                'header' => Yii::t('hipanel', 'Actions'),
+                'class' => MenuColumn::class,
+                'menuClass' => ReminderActionsMenu::class,
+                'contentOptions' => [
+                    'class' => 'text-center',
+                    'style' => 'width:1%; white-space:nowrap;',
+                ],
             ],
         ]);
     }

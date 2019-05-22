@@ -29,7 +29,7 @@ use yii\helpers\StringHelper;
                         <div class="col-xs-6">
                             <div class="btn-group">
                                 <?php
-                                if ($reminder->periodicity === 'once') {
+                                if (in_array($reminder->periodicity, ['once', 'never'])) {
                                     $options = [
                                         'class' => 'btn btn-default btn-xs reminder-update',
                                         'data' => [
@@ -78,37 +78,6 @@ use yii\helpers\StringHelper;
                             ]) ?>
                         </div>
                     </div>
-                    <!--small>
-                        <?= Yii::t('hiqdev:yii2:reminder', 'Remind in') ?>:
-                        <?php foreach ($remindInOptions as $time => $label) : ?>
-                            <?= Html::button(
-                        Yii::t('hiqdev:yii2:reminder', $label),
-                        [
-                            'class' => 'btn btn-xs btn-link reminder-update',
-                            'data' => [
-                                'reminder-id' => $reminder->id,
-                                'reminder-action' => $time,
-                            ],
-                        ]
-                    ) ?>
-                        <?php endforeach ?>
-                        <br>
-                        <?php if ($reminder->periodicity !== 'once') : ?>
-                            <?= Html::button(Yii::t('hiqdev:yii2:reminder', 'Remind next time'), [
-                        'class' => 'btn btn-xs btn-block btn-info reminder-update lg-mt-10 md-mt-10',
-                        'data' => [
-                            'reminder-id' => $reminder->id,
-                            'reminder-action' => $reminder->periodicityNextTime,
-                        ],
-                    ]) ?>
-                        <?php endif; ?>
-                        <?= Html::button(Yii::t('hiqdev:yii2:reminder', 'Don\'t remind'), [
-                        'class' => 'btn btn-xs btn-block btn-danger reminder-delete lg-mt-10 md-mt-10',
-                        'data' => [
-                            'reminder-id' => $reminder->id,
-                        ],
-                    ]) ?>
-                    </small-->
                 </div>
             </li>
         <?php endforeach; ?>
