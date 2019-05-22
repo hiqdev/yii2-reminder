@@ -38,8 +38,8 @@ return [
     'Don\'t remind' => 'Не напоминать',
     'You have no reminders' => 'У вас нет напоминаний',
     'Description' => 'Описание',
-    'Reminder created' => 'Напоминание создано',
-    'Reminder removed' => 'Напоминание удалено',
+    'Reminder has been created' => 'Напоминание создано',
+    'Reminder has been removed' => 'Напоминание удалено',
     'Reminders deferred' => 'Напоминание отложено',
     'Defer' => 'Отложить',
 ];

@@ -42,7 +42,8 @@
                 $elem.popover({
                     content: $('#popover-' + $elem.data('reminder-id')).html(),
                     html: true,
-                    trigger: 'click'
+                    trigger: 'click',
+                    sanitize: false,
                 });
             });
             $(document).on('click', '.reminder-defer', function (ev) {

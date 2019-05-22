@@ -9,6 +9,9 @@
  */
 
 return [
+    'aliases' => [
+        '@reminder' => '/reminder/reminder',
+    ],
     'components' => [
         'i18n' => [
             'translations' => [

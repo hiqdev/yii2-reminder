@@ -7,14 +7,13 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 /**
- * @var Reminder
- * @var array[] $periodicityOptions
+ * @var Reminder $model
  */
 $lng = Yii::$app->language;
 $this->registerJs("
 $('#reminder-from_time').datetimepicker({
     format: 'YYYY-MM-DD HH:mm',
-    stepping: 10,
+    stepping: 5,
     locale: '{$lng}',
     showClose: true,
     defaultDate: moment().add(1, 'hour').format('YYYY-MM-DD HH:mm')
@@ -40,7 +39,7 @@ $('#reminder-from_time').datetimepicker({
     Reminder::TYPE_MAIL => Yii::t('hiqdev:yii2:reminder', 'By mail'),
 ]) ?>
 
-<?= $form->field($model, 'periodicity')->dropDownList(Yii::$app->controller->getPeriodicityOptions()) ?>
+<?= $form->field($model, 'periodicity')->dropDownList($model->getPeriodicityOptions()) ?>
 
 <?= $form->field($model, 'from_time') ?>
 

@@ -19,13 +19,14 @@ use hipanel\actions\SmartDeleteAction;
 use hipanel\actions\SmartUpdateAction;
 use hipanel\actions\ValidateFormAction;
 use hipanel\actions\ViewAction;
+use hipanel\base\CrudController;
 use hiqdev\yii2\reminder\behaviors\RemindersCacheInvalidatorBehavior;
 use hiqdev\yii2\reminder\models\Reminder;
 use Yii;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class ReminderController extends \hipanel\base\CrudController
+class ReminderController extends CrudController
 {
     /// TODO extend from yii\web\Controller:
     /// - no need to change viewPath
@@ -45,9 +46,9 @@ class ReminderController extends \hipanel\base\CrudController
                 'actions' => [
                     'create',
                     'update',
-                    'delete'
-                ]
-            ]
+                    'delete',
+                ],
+            ],
         ]);
     }
 
@@ -109,12 +110,12 @@ class ReminderController extends \hipanel\base\CrudController
             ],
             'delete' => [
                 'class' => SmartDeleteAction::class,
-                'success' => Yii::t('hiqdev:yii2:reminder', 'Reminder removed'),
+                'success' => Yii::t('hiqdev:yii2:reminder', 'Reminder has been removed'),
             ],
             'ajax-reminders-list' => [
                 'class' => RenderAjaxAction::class,
                 'view' => '_ajaxReminderList',
-                'params' => function ($action) {
+                'params' => function () {
                     $reminders = Reminder::find()->own()->triggered()->toSite()->all();
                     $remindInOptions = Reminder::reminderNextTimeOptions();
                     $offset = Yii::$app->request->post('offset');
@@ -123,16 +124,6 @@ class ReminderController extends \hipanel\base\CrudController
                 },
             ],
         ];
-    }
-
-    public function getPeriodicityOptions()
-    {
-        return $this->getRefs('type,periodicity', 'hiqdev:yii2:reminder');
-    }
-
-    public function getTypeReminder()
-    {
-        return $this->getRefs('type,reminder', 'hiqdev:yii2:reminder');
     }
 
     public function actionGetCount()

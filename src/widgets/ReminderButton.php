@@ -36,7 +36,7 @@ class ReminderButton extends Widget
             echo AjaxModal::widget([
                 'bulkPage' => false,
                 'id' => $this->getModalId(),
-                'successText' => Yii::t('hiqdev:yii2:reminder', 'Reminder created'),
+                'successText' => Yii::t('hiqdev:yii2:reminder', 'Reminder has been created'),
                 'modalFormId' => 'reminder-form-' . $this->object_id,
                 'scenario' => 'create',
                 'actionUrl' => ['/reminder/reminder/create-modal', 'object_id' => $this->object_id],
