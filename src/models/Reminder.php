@@ -95,10 +95,8 @@ class Reminder extends Model
     {
         $result = '';
         if ($this->class_name) {
-            switch (true) {
-                case in_array($this->class_name, ['thread', 'message']):
-                    $result = 'ticket';
-                    break;
+            if (in_array($this->class_name, ['thread', 'message'])) {
+                $result = 'ticket';
             }
         }
 
