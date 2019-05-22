@@ -43,7 +43,7 @@ class ReminderTop extends Widget
         $count = 0;
         $totalCount = Yii::$app->cache->getOrSet(RemindersCacheInvalidatorBehavior::totalCountCacheKey(), function () {
             return (int)Reminder::find()->own()->toSite()->count();
-        }, 1); // 86400 1 day
+        }, 86400); // 1 day
 
         if ($totalCount > 0) {
             $count = Reminder::find()->own()->triggered()->toSite()->count();
