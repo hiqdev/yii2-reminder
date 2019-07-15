@@ -24,7 +24,7 @@ class ReminderGridView extends BoxedGridView
         return array_merge(parent::columns(), [
             'periodicity' => [
                 'value' => function ($model) {
-                    return Yii::t('hiqdev:yii2:reminder', $model->periodicity_label);
+                    return Yii::t('hiqdev:yii2:reminder', $model->periodicity);
                 },
                 'filter' => false,
             ],

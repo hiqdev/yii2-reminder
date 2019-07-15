@@ -34,6 +34,7 @@ return [
     'Reminder has been removed' => 'Напоминание удалено',
     'Reminders deferred' => 'Напоминание отложено',
     'Defer' => 'Отложить',
+    'Object' => 'Объект',
 
     // Periodicity
     'never' => 'Однократно',
