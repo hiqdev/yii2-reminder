@@ -16,7 +16,7 @@ use yii\web\JqueryAsset;
 
 class ReminderTopAsset extends AssetBundle
 {
-    public $sourcePath = '@hiqdev/yii2/reminder/assets';
+    public $sourcePath = __DIR__ . '/assets';
 
     public $css = [
         'css/reminderTop.css',
