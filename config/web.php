@@ -17,7 +17,7 @@ return [
             'translations' => [
                 'hiqdev:yii2:reminder' => [
                     'class' => \yii\i18n\PhpMessageSource::class,
-                    'basePath' => '@hiqdev/yii2/reminder/messages',
+                    'basePath' => dirname(__DIR__) . '/src/messages',
                 ],
             ],
         ],
