@@ -35,7 +35,7 @@ class ReminderController extends CrudController
     {
         parent::init();
 
-        $this->viewPath = '@hiqdev/yii2/reminder/views/reminder';
+        $this->viewPath = dirname(__DIR__) . '/views/reminder';
     }
 
     public function behaviors()
