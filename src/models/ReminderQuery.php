@@ -41,7 +41,7 @@ class ReminderQuery extends ActiveQuery
     public function own()
     {
         $this->andWhere([
-            'client_id' => Yii::$app->user->identity->id,
+            'client_id' => Yii::$app->user->identity->id ?? null,
         ]);
 
         return $this;
